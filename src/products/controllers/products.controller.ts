@@ -13,15 +13,14 @@ import {
 } from '@nestjs/common';
 import { ParseIntPipe } from 'src/common/parse-int.pipe';
 import { ProductsService } from '../services/products.service';
-import { CreateProductDTO } from 'src/dtos/products.dto';
-import { UpdateProductDTO } from 'src/dtos/products.dto';
+import { CreateProductDTO, UpdateProductDTO } from 'src/products/dtos/products.dto';
 
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
   @Get()
-  paginteProducts(
+  findAll(
       @Query('limit') limit = 100, 
       @Query('offset') offset = 5, 
       @Query('brand') brand: string
@@ -52,7 +51,7 @@ export class ProductsController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number) {
-    return id;
+  remove(@Param('id', ParseIntPipe) id: number) {
+    return this.productsService.delete(id);
   }
 }
