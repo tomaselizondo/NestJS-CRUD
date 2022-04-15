@@ -11,19 +11,23 @@ import {
   HttpCode,
   // ParseIntPipe,
 } from '@nestjs/common';
+import { ApiTags, ApiOperation} from '@nestjs/swagger';
 import { ParseIntPipe } from 'src/common/parse-int.pipe';
 import { ProductsService } from '../services/products.service';
 import { CreateProductDTO, UpdateProductDTO } from 'src/products/dtos/products.dto';
 
+@ApiTags('products')
 @Controller('products')
 export class ProductsController {
   constructor(private productsService: ProductsService) {}
 
   @Get()
+  @ApiOperation({ summary: 'It returns a list of products' })
   findAll(
-      @Query('limit') limit = 100, 
-      @Query('offset') offset = 5, 
-      @Query('brand') brand: string
+      // NOT IMPLEMENTED QUERIES
+      // @Query('limit') limit = 100, 
+      // @Query('offset') offset = 5, 
+      // @Query('brand') brand: string
     ): Object {
     return this.productsService.findAll();
   }   

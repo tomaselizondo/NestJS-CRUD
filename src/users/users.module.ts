@@ -10,7 +10,6 @@ import { ProductsModule } from 'src/products/products.module';
   imports: [ProductsModule],
   controllers: [CustomersController, UsersController],
   providers: [CustomersService, UsersService],
-  exports: [UsersService, UsersController],
 })
 
 export class UsersModule {};
