@@ -36,10 +36,10 @@ export class ProductsService {
     return newProduct;
   }
 
-  update(id: string, payload: UpdateProductDTO) {
-    const product = this.findOne(Number.parseInt(id));
+  update(id: number, payload: UpdateProductDTO) {
+    const product = this.findOne(id);
     if (product) {
-      const index = this.products.findIndex((prod) => prod.id === Number.parseInt(id));
+      const index = this.products.findIndex((prod) => prod.id === id);
       this.products[index] = {
         ...product,
         ...payload,
@@ -50,8 +50,7 @@ export class ProductsService {
   }
 
   delete(id: number) {
-    const product = this.findOne(id);
     this.products.splice(id, 1);
-    return product;
+    return `Deleted: ${(id + 1)}`;
   }
 }
