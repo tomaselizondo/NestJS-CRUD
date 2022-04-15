@@ -1,20 +1,22 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { CreateUserDTO, UpdateUserDTO  } from '../dtos/users.dto';
+import { CreateUserDTO, UpdateUserDTO } from '../dtos/users.dto';
 import { User } from '../entities/user.entity';
 import { Order } from '../entities/order.entity';
-import { ProductsService  } from 'src/products/services/products.service';
+import { ProductsService } from 'src/products/services/products.service';
 
 @Injectable()
 export class UsersService {
   constructor(private productService: ProductsService) {}
 
   private counterId = 1;
-  private users: User[] = [{
-    id: 1,
-    email: 'johnlennon@gmail.com',
-    password: 'Woefw345ej432d',
-    role: 'admin',
-  }];
+  private users: User[] = [
+    {
+      id: 1,
+      email: 'johnlennon@gmail.com',
+      password: 'Woefw345ej432d',
+      role: 'admin',
+    },
+  ];
 
   // IMPLEMENT LATER: BEST ORDER STRUCTURE.
   // private orders: Order[] = [{
@@ -51,7 +53,7 @@ export class UsersService {
   //     image: 'string',
   //   }]
   // }]
-  
+
   // IMPLEMENT LATER:
   // findRole(role: string) {
   //   const usersPerRole = [];
@@ -66,8 +68,8 @@ export class UsersService {
 
   findAll() {
     return this.users;
-  };
-  
+  }
+
   findOne(id: number) {
     const user = this.users.find((prod) => prod.id === id);
     if (!user) {
@@ -84,7 +86,7 @@ export class UsersService {
       products: this.productService.findAll(),
     };
   }
-  
+
   create(payload: CreateUserDTO) {
     this.counterId = this.counterId + 1;
     const newUser = {
@@ -93,8 +95,8 @@ export class UsersService {
     };
     this.users.push(newUser);
     return newUser;
-  } 
-  
+  }
+
   update(id: number, payload: UpdateUserDTO) {
     const user = this.findOne(id);
     if (user) {
@@ -107,9 +109,9 @@ export class UsersService {
     }
     return null;
   }
-  
+
   delete(id: number) {
-    this.users.splice(id,1);
-    return `Deleted: ${(id + 1)}`;
+    this.users.splice(id, 1);
+    return `Deleted: ${id + 1}`;
   }
 }

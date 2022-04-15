@@ -1,18 +1,23 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Product } from '../entities/product.entity';
-import { CreateProductDTO, UpdateProductDTO } from 'src/products/dtos/products.dto';
+import {
+  CreateProductDTO,
+  UpdateProductDTO,
+} from 'src/products/dtos/products.dto';
 
 @Injectable()
 export class ProductsService {
   private counterId = 1;
-  private products: Product[] = [{
-    id: 1,
-    name: 'sda',
-    description: 'sdfaa',
-    price: 23,
-    stock: 342,
-    image: 'dsaf',
-  }];
+  private products: Product[] = [
+    {
+      id: 1,
+      name: 'sda',
+      description: 'sdfaa',
+      price: 23,
+      stock: 342,
+      image: 'dsaf',
+    },
+  ];
 
   findAll() {
     return this.products;
@@ -51,6 +56,6 @@ export class ProductsService {
 
   delete(id: number) {
     this.products.splice(id, 1);
-    return `Deleted: ${(id + 1)}`;
+    return `Deleted: ${id + 1}`;
   }
 }

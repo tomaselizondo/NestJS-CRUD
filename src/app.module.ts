@@ -12,9 +12,9 @@ import config from 'config';
 
 @Module({
   imports: [
-    UsersModule, 
-    ProductsModule, 
-    DatabaseModule, 
+    UsersModule,
+    ProductsModule,
+    DatabaseModule,
     ConfigModule.forRoot({
       envFilePath: environments[process.env.NODE_ENV] || '.env',
       load: [config],
@@ -23,7 +23,7 @@ import config from 'config';
         API_KEY: Joi.number().required(),
         DATABASE_NAME: Joi.string().required(),
         DATABASE_PORT: Joi.number().required(),
-      })
+      }),
     }),
   ],
   controllers: [AppController],

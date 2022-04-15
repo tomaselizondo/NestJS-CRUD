@@ -1,4 +1,4 @@
-import { IsString } from "class-validator";
+import { IsString } from 'class-validator';
 import { PartialType } from '@nestjs/swagger';
 
 export class CreateBrandDTO {
@@ -6,4 +6,4 @@ export class CreateBrandDTO {
   readonly tag: string;
 }
 
-export class UpdateBrandDTO extends PartialType(CreateBrandDTO) {};
+export class UpdateBrandDTO extends PartialType(CreateBrandDTO) {}

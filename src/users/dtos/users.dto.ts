@@ -1,14 +1,10 @@
-import { 
-  IsString,
-  IsEmail,
-  IsNotEmpty,
-} from 'class-validator';
+import { IsString, IsEmail, IsNotEmpty } from 'class-validator';
 import { PartialType, ApiProperty } from '@nestjs/swagger';
 
 export class CreateUserDTO {
   @IsEmail()
   @IsNotEmpty()
-  @ApiProperty({ description: 'the users email'}) // more info for the swagger api
+  @ApiProperty({ description: 'the users email' }) // more info for the swagger api
   readonly email: string;
 
   @IsString()
@@ -20,4 +16,4 @@ export class CreateUserDTO {
   readonly role: string;
 }
 
-export class UpdateUserDTO extends PartialType(CreateUserDTO) {};
+export class UpdateUserDTO extends PartialType(CreateUserDTO) {}

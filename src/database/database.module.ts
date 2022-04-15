@@ -3,7 +3,7 @@ import { Module, Global } from '@nestjs/common';
 import { firstValueFrom } from 'rxjs';
 
 const API_KEY = 'akfkjhasfadwrofwf';
-const API_KEY_PROD = 'PRODdfladsff'
+const API_KEY_PROD = 'PRODdfladsff';
 
 @Global()
 @Module({
@@ -17,11 +17,13 @@ const API_KEY_PROD = 'PRODdfladsff'
       provide: 'TASKS',
       inject: [HttpService],
       useFactory: async (http: HttpService) => {
-        const tasks = await http.get('https://jsonplaceholder.typicode.com/todos');
+        const tasks = await http.get(
+          'https://jsonplaceholder.typicode.com/todos',
+        );
         const value = (await Promise.resolve(firstValueFrom(tasks))).data;
         return value;
       },
-    }
+    },
   ],
   exports: ['API_KEY', 'TASKS'],
 })

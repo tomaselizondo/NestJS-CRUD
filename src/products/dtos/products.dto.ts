@@ -1,9 +1,9 @@
-import { 
-  IsString, 
-  IsNumber, 
-  IsUrl, 
-  IsNotEmpty, 
-  IsPositive 
+import {
+  IsString,
+  IsNumber,
+  IsUrl,
+  IsNotEmpty,
+  IsPositive,
 } from 'class-validator';
 // import { PartialType } from '@nestjs/mapped-types'; // Esta era la dependencia usada antes de la documentación automática.
 import { PartialType } from '@nestjs/swagger';
@@ -32,4 +32,4 @@ export class CreateProductDTO {
   readonly image: string;
 }
 
-export class UpdateProductDTO extends PartialType(CreateProductDTO) {};
+export class UpdateProductDTO extends PartialType(CreateProductDTO) {}

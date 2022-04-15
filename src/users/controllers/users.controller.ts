@@ -1,4 +1,4 @@
-import { 
+import {
   Controller,
   Body,
   Param,
@@ -9,7 +9,7 @@ import {
   ParseIntPipe,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
-import { CreateUserDTO, UpdateUserDTO  } from '../dtos/users.dto';
+import { CreateUserDTO, UpdateUserDTO } from '../dtos/users.dto';
 import { UsersService } from '../services/users.service';
 
 @ApiTags('users')
@@ -45,12 +45,15 @@ export class UsersController {
   }
 
   @Put(':id')
-  update(@Param('id', ParseIntPipe) id: number, @Body() payload: UpdateUserDTO) {
+  update(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() payload: UpdateUserDTO,
+  ) {
     return this.usersService.update(id, payload);
   }
 
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number) {
-    return this.usersService.delete(id -1);
+    return this.usersService.delete(id - 1);
   }
 }
