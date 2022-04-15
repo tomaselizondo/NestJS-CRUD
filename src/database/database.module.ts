@@ -4,7 +4,7 @@ import { firstValueFrom } from 'rxjs';
 
 const API_KEY = 'akfkjhasfadwrofwf';
 const API_KEY_PROD = 'PRODdfladsff'
- 
+
 @Global()
 @Module({
   imports: [HttpModule],
